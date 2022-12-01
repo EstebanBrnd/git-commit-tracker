@@ -5,5 +5,7 @@ Suivi des commits et envoi des commits sur Discord
 Il faut installer les librairies indiquées dans requirements.txt
 
 # Démarrage
--Il est nécessaire de placer ces deux fichiers dans le répertoire de la copie locale du git à suivre.
--Il est nécessaire de modifier l'url du webhook dans commit_tracker.py
+Il est nécessaire de placer ces deux fichiers dans le répertoire de la copie locale du git à suivre.
+Il est nécessaire de modifier l'url du webhook dans commit_tracker.py
+
+Ensuite, il suffit de lancer la commande suivante: ./commit_tracker.sh [temps en secondes entre chaque mise à jour]
