@@ -7,5 +7,5 @@ python3 commit_tracker.py
 rm date.txt
 rm author.txt
 rm com.txt
-sleep 10
+sleep $1
 done
