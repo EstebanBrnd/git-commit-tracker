@@ -60,7 +60,9 @@ if is_something_new(up,last):
         embed.add_embed_field(name="Hash",value=f"{hash[i]}")
         embed.add_embed_field(name="Ish",value=f"{d[i][0]}")
         embed.add_embed_field(name="Fichiers modifiés par ce commit",value=f"{d[i][1]}",inline=False)
-        embed.set_footer(icon_url="https://cdn-icons-png.flaticon.com/512/25/25231.png",text=f"Modifications sur le GIT '{name}'")
+        embed.set_footer(icon_url="https://cdn-icons-png.flaticon.com/512/25/25231.png",text=f"Modifications sur le git '{name}'")
+
+
         webhook.add_embed(embed)
         response = webhook.execute()
         i=i-1
