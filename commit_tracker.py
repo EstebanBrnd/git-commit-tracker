@@ -1,19 +1,16 @@
 from discord_webhook import DiscordWebhook, DiscordEmbed
 def get_last():
     try:
-        with open("last.commit","r") as f:
-            return f.read()
+        with open("last.commit","r") as f : return f.read()
     except:
-        with open("last.commit","w"):
-            return ''
+        with open("last.commit","w"): return ''
 
 def get_update():
     with open("date.txt","r") as f:
         return f.read().split("\n")
     
 def is_something_new(l,last):
-    if l[0]==last:
-        return False
+    if l[0]==last : return False
     return True
 
 def get_pos_last(l,last):
@@ -29,18 +26,14 @@ def commit_analyse():
                 if len(line)!=1:
                     if list_files!=[]:
                         text=" ".join(list_files)
-                        out.write(text)
-                        out.write("\n")
+                        out.write(f"{text}\n")
                         list_files=[]
-                    out.write(line[0])
-                    out.write(" ")
-                if len(line)==1:
-                    list_files.append(line[0])
+                    out.write(f"{line[0]} ")
+                if len(line)==1: list_files.append(line[0])
             text=" ".join(list_files)
             out.write(text)
     with open("commit.txt","r") as f:
-        l=f.read().split("\n")
-        i=0
+        i,l=0,f.read().split("\n")
         for elt in l:
             a=elt.split(" ")
             l[i]=[a[0],"\n".join(a[1:])]
@@ -50,14 +43,10 @@ def commit_analyse():
 up=get_update()
 last=get_last()
 if is_something_new(up,last):
-    with open("com.txt","r") as f:
-        com=f.read().split("\n")
-    with open("author.txt","r") as f:
-        auth=f.read().split("\n")
-    with open("name.txt","r") as f:
-        name=f.read().strip("\r\n")
-    with open("hash.txt","r") as f:
-        hash=f.read().split("\n")
+    with open("com.txt","r") as f: com=f.read().split("\n")
+    with open("author.txt","r") as f: auth=f.read().split("\n")
+    with open("name.txt","r") as f: name=f.read().strip("\r\n")
+    with open("hash.txt","r") as f: hash=f.read().split("\n")
     d=commit_analyse()
     i=get_pos_last(up,last)-1
     while i>=0:
@@ -72,10 +61,7 @@ if is_something_new(up,last):
         embed.add_embed_field(name="Ish",value=f"{d[i][0]}")
         embed.add_embed_field(name="Fichiers modifiés par ce commit",value=f"{d[i][1]}",inline=False)
         embed.set_footer(icon_url="https://cdn-icons-png.flaticon.com/512/25/25231.png",text=f"Modifications sur le GIT '{name}'")
-
-
         webhook.add_embed(embed)
-
         response = webhook.execute()
         i=i-1
     with open("last.commit","w") as f:
