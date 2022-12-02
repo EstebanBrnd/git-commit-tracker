@@ -1,7 +1,11 @@
 from discord_webhook import DiscordWebhook, DiscordEmbed
 def get_last():
-    with open("last.commit","r") as f:
-        return f.read()
+    try:
+        with open("last.commit","r") as f:
+            return f.read()
+    except:
+        with open("last.commit","w"):
+            return ''
 
 def get_update():
     with open("date.txt","r") as f:
