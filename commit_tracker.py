@@ -51,6 +51,9 @@ if is_something_new(up,last):
     i=get_pos_last(up,last)-1
     while i>=0:
         print(f"COMMIT à {up[i]} de {auth[i]} : {com[i]}")
+        ############################################################################################################################
+        ########################################## EMBED A MODIFIER ICI ############################################################
+        ############################################################################################################################
         webhook = DiscordWebhook(url='EMBED URL')
         embed = DiscordEmbed(title='Nouveau Commit', description='Un nouveau commit a été effectué', color='ffdd99')
         embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/25/25231.png")
